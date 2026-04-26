@@ -9,73 +9,102 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Gambar makanan full width -->
+        <!-- Gambar hero full width -->
         <ImageView
             android:id="@+id/imgDetail"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="260dp"
             android:scaleType="centerCrop"
-            android:background="@color/background"
-            android:contentDescription="gambar makanan" />
+            android:background="@color/divider" />
 
-        <LinearLayout
+        <!-- Card konten -->
+        <androidx.cardview.widget.CardView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_margin="12dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/white">
 
-            <!-- Nama resep -->
-            <TextView
-                android:id="@+id/tvDetailName"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nama Resep"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_primary" />
+                android:orientation="vertical"
+                android:padding="16dp">
 
-            <!-- Kategori -->
-            <TextView
-                android:id="@+id/tvDetailCategory"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@color/primary"
-                android:paddingHorizontal="12dp"
-                android:paddingVertical="4dp"
-                android:text="Kategori"
-                android:textColor="#263238"
-                android:textSize="13sp" />
+                <!-- Nama resep -->
+                <TextView
+                    android:id="@+id/tvDetailName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Resep"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:lineSpacingMultiplier="1.2" />
 
-            <!-- Garis pemisah -->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/text_secondary"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp" />
+                <!-- Tag kategori -->
+                <TextView
+                    android:id="@+id/tvDetailCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kategori"
+                    android:textSize="12sp"
+                    android:textColor="@color/primary"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_category_tag"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:layout_marginTop="8dp" />
 
-            <!-- Label instruksi -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cara Memasak"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_primary" />
+                <!-- Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp" />
 
-            <!-- Isi instruksi -->
-            <TextView
-                android:id="@+id/tvDetailInstruction"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Instruksi memasak..."
-                android:textSize="14sp"
-                android:textColor="@color/text_secondary"
-                android:lineSpacingMultiplier="1.5"
-                android:layout_marginTop="8dp" />
+                <!-- Label cara memasak -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
 
-        </LinearLayout>
+                    <View
+                        android:layout_width="4dp"
+                        android:layout_height="20dp"
+                        android:background="@color/primary"
+                        android:layout_marginEnd="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cara Memasak"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary" />
+
+                </LinearLayout>
+
+                <!-- Isi instruksi -->
+                <TextView
+                    android:id="@+id/tvDetailInstruction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Instruksi memasak..."
+                    android:textSize="14sp"
+                    android:textColor="@color/text_secondary"
+                    android:lineSpacingMultiplier="1.6" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 

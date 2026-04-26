@@ -21,7 +21,8 @@
 
         <activity
             android:name=".ui.DetailActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.ChefDadakan.Detail" />
 
     </application>
 
