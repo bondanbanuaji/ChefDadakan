@@ -1,27 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
     android:background="@color/background">
 
-    <!-- Search bar input -->
-    <EditText
-        android:id="@+id/etSearch"
+    <!-- Header -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Cari resep makanan..."
-        android:padding="12dp"
-        android:background="@drawable/bg_search"
-        android:inputType="text"
-        android:imeOptions="actionSearch" />
+        android:background="@color/primary"
+        android:padding="16dp"
+        android:orientation="vertical">
 
-    <!-- Search results -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cari Resep 🔍"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ketik nama makanan yang ingin kamu masak"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:layout_marginTop="4dp" />
+
+    </LinearLayout>
+
+    <!-- Search Box Area -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:elevation="4dp">
+
+        <!-- Input field -->
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:hint="Contoh: Ayam, Soto, Rendang..."
+            android:textSize="14sp"
+            android:textColor="@color/text_primary"
+            android:background="@drawable/bg_search_input"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:inputType="text"
+            android:imeOptions="actionSearch"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+        <!-- Tombol Search -->
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_btn_search"
+            android:text="→"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- Info jumlah hasil -->
+    <TextView
+        android:id="@+id/tvResultInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="12sp"
+        android:textColor="@color/text_secondary"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
+        android:visibility="gone" />
+
+    <!-- ProgressBar loading -->
+    <ProgressBar
+        android:id="@+id/progressBarSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="32dp"
+        android:visibility="gone" />
+
+    <!-- Empty State -->
+    <LinearLayout
+        android:id="@+id/layoutEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="48dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🍽️"
+            android:textSize="64sp" />
+
+        <TextView
+            android:id="@+id/tvEmptyTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Resep tidak ditemukan"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:layout_marginTop="12dp" />
+
+        <TextView
+            android:id="@+id/tvEmptySubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Coba kata kunci lain"
+            android:textSize="13sp"
+            android:textColor="@color/text_secondary"
+            android:gravity="center"
+            android:layout_marginTop="6dp" />
+
+    </LinearLayout>
+
+    <!-- Initial State (sebelum search) -->
+    <LinearLayout
+        android:id="@+id/layoutInitial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="48dp"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="👨‍🍳"
+            android:textSize="64sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mau masak apa hari ini?"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:layout_marginTop="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ketik nama makanan di atas\nlalu tekan tombol cari"
+            android:textSize="13sp"
+            android:textColor="@color/text_secondary"
+            android:gravity="center"
+            android:layout_marginTop="6dp" />
+
+    </LinearLayout>
+
+    <!-- Hasil pencarian RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSearchResult"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="12dp" />
+        android:padding="4dp"
+        android:clipToPadding="false"
+        android:visibility="gone" />
 
 </LinearLayout>
